@@ -1,7 +1,8 @@
 const { Client, GatewayIntentBits } = require("discord.js");
+
 const TOKEN = process.env.TOKEN;
-const GUILD_ID = "1212006970127687710";
-const SHEET_API = "https://script.google.com/macros/s/AKfycbxOmmYJmFXHpwnc-uN3xm-zX_uZ4rJlbxMz7mNkKl07P0P3xSoi_vV9S1oZEvU0lBU/exec";
+const GUILD_ID = process.env.GUILD_ID;
+const SHEET_API = process.env.SHEET_API;
 
 const ROLE_MAP = {
   "1212028343504081016": "Than",
@@ -10,7 +11,6 @@ const ROLE_MAP = {
   "1405832187663880243": "Devil"
 };
 
-// 🔥 THIẾU CÁI NÀY (nguyên nhân lỗi)
 const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
 });
@@ -39,7 +39,7 @@ client.once("clientReady", async () => {
     });
   }
 
-  console.log("Sending:", payload);
+  console.log("Sending data...");
 
   await fetch(SHEET_API, {
     method: "POST",
@@ -48,7 +48,9 @@ client.once("clientReady", async () => {
   });
 
   console.log("Synced!");
-  process.exit();
+
+  client.destroy(); // 🔥 QUAN TRỌNG
+  process.exit(0);
 });
 
 client.login(TOKEN);
