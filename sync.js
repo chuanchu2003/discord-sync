@@ -1,5 +1,5 @@
 const { Client, GatewayIntentBits } = require("discord.js");
-const TOKEN = "MTQ4NTYxNzgxNDg2ODk4Mzk5OA.GbXS7a.gBN56SQ8BGbwAz3pzHFgbrSpNbUURipV2ljvCY"; 
+const TOKEN = process.env.TOKEN;
 const GUILD_ID = "1212006970127687710";
 const SHEET_API = "https://script.google.com/macros/s/AKfycbxOmmYJmFXHpwnc-uN3xm-zX_uZ4rJlbxMz7mNkKl07P0P3xSoi_vV9S1oZEvU0lBU/exec";
 
